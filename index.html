@@ -1,1 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dra. Marie Bustamante | El Arte del Equilibrio</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --beige: #F9F7F2;
+            --gold: #C5A059;
+            --eucalyptus: #879B89;
+            --text: #4A4A4A;
+            --white: #FFFFFF;
+        }
 
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--beige);
+            color: var(--text);
+            overflow: hidden; 
+            touch-action: none;
+        }
+
+        .slider {
+            display: flex;
+            width: 600vw;
+            height: 100vh;
+            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        section {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10%;
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+        }
+
+        .bg-beige { background-color: var(--beige); }
+        .bg-white { background-color: var(--white); }
+        .bg-eucalyptus { background-color: var(--eucalyptus); color: var(--white); }
+
+        h1, h2 { font-family: 'Cormorant Garamond', serif; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; line-height: 1.2; }
+        h1 { font-size: 2.2rem; margin: 0; }
+        h2 { font-size: 1.6rem; margin-bottom: 15px; }
+        
+        .gold-line { width: 40px; height: 1px; background: var(--gold); margin: 25px auto; }
+        .bg-eucalyptus .gold-line { background: var(--white); }
+        
+        .content { 
+            max-width: 650px; 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: all 1s ease; 
+        }
+        
+        .active .content { opacity: 1; transform: translateY(0); }
+
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 20;
+            padding: 15px;
+            font-family: serif;
+            opacity: 0.4;
+        }
+        .prev { left: 5px; }
+        .next { right: 5px; }
+        .bg-eucalyptus-nav { color: var(--white) !important; }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 30px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 14px 30px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .bg-eucalyptus .cta-btn { border-color: var(--white); color: var(--white); }
+
+        .page-indicator {
+            position: fixed;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            section { padding: 12%; }
+            .nav-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="nav-arrow prev" onclick="moveSlider(-1)">‹</button>
+    <button class="nav-arrow next" id="nextBtn" onclick="moveSlider(1)">›</button>
+
+    <div class="slider" id="mainSlider">
+        
+        <section class="bg-beige active">
+            <div class="content">
+                <h1>Marie Bustamante</h1>
+                <div class="gold-line"></div>
+                <p style="font-family: 'Cormorant Garamond'; font-size: 1.3rem; font-style: italic; color: var(--gold);">El arte de sonreír en equilibrio</p>
+            </div>
+        </section>
+
+        <section class="bg-white">
+            <div class="content">
+                <h2>El Origen de tu Calma</h2>
+                <div class="gold-line"></div>
+                <p>Priorizamos tu tranquilidad. Hemos diseñado un espacio donde tu bienestar comienza antes de sentarte en el sillón.</p>
+            </div>
+        </section>
+
+        <section class="bg-eucalyptus">
+            <div class="content">
+                <h2>Estética y Bienestar en cada Etapa</h2>
+                <div class="gold-line"></div>
+                <div style="display: flex; flex-direction: column; gap: 25px; text-align: left; max-width: 500px; margin: 0 auto;">
+                    
+                    <div style="border-left: 2px solid var(--beige); padding-left: 20px;">
+                        <h3 style="font-family: 'Cormorant Garamond'; font-size: 1.3rem; text-transform: uppercase; margin: 0; color: var(--beige);">Junior</h3>
+                        <p style="margin-top: 5px; font-size: 0.9rem;">Sembrando confianza y salud desde su primera visita. Potenciamos su seguridad con alineación temprana y prevención, enfocados en un crecimiento estético y saludable.</p>
+                    </div>
+
+                    <div style="border-left: 2px solid var(--beige); padding-left: 20px;">
+                        <h3 style="font-family: 'Cormorant Garamond'; font-size: 1.3rem; text-transform: uppercase; margin: 0; color: var(--beige);">Premium</h3>
+                        <p style="margin-top: 5px; font-size: 0.9rem;">Arquitectura de la sonrisa y salud integral. Un enfoque delicado para armonizar tu expresión a través de una dentadura sana.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-beige">
+            <div class="content">
+                <h2>La Sonrisa como Eje</h2>
+                <div class="gold-line"></div>
+                <p>Tu salud fluye cuando tu boca está en armonía. Respirar, digerir y sostenerte con libertad es el verdadero propósito de nuestro trabajo.</p>
+            </div>
+        </section>
+
+        <section class="bg-eucalyptus">
+            <div class="content">
+                <h2>Un respiro para tus sentidos</h2>
+                <div class="gold-line"></div>
+                <p>Odontología consciente y sin dolor. Transformamos tu visita en una pausa de bienestar absoluta con atención personalizada.</p>
+            </div>
+        </section>
+
+        <section class="bg-white">
+            <div class="content">
+                <h2>Encuentra tu lugar</h2>
+                <div class="gold-line"></div>
+                <p>Permítenos acompañarte hacia una versión más saludable y radiante de ti misma. Te esperamos.</p>
+                <a href="https://wa.me/51902640540?text=Hola%20Marie,%20quisiera%20agendar%20mi%20visita" class="cta-btn">Agendar mi visita</a>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="page-indicator" id="pageNumber">PÁG. 1</div>
+
+    <script>
+        let currentSlide = 0;
+        const slider = document.getElementById('mainSlider');
+        const sections = document.querySelectorAll('section');
+        const arrows = document.querySelectorAll('.nav-arrow');
+        const pageIndicator = document.getElementById('pageNumber');
+
+        function moveSlider(direction) {
+            currentSlide = Math.max(0, Math.min(currentSlide + direction, 5));
+            slider.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            
+            sections.forEach((sec, index) => {
+                if(index === currentSlide) {
+                    sec.classList.add('active');
+                    pageIndicator.innerText = `PÁG. ${index + 1}`;
+                    const isGreen = sec.classList.contains('bg-eucalyptus');
+                    arrows.forEach(a => isGreen ? a.classList.add('bg-eucalyptus-nav') : a.classList.remove('bg-eucalyptus-nav'));
+                    pageIndicator.style.color = isGreen ? '#F9F7F2' : '#C5A059';
+                } else {
+                    sec.classList.remove('active');
+                }
+            });
+        }
+
+        let touchstartX = 0;
+        let touchendX = 0;
+        document.addEventListener('touchstart', e => touchstartX = e.changedTouches[0].screenX);
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            if (touchstartX - touchendX > 50) moveSlider(1);
+            if (touchendX - touchstartX > 50) moveSlider(-1);
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === "ArrowRight") moveSlider(1);
+            if (e.key === "ArrowLeft") moveSlider(-1);
+        });
+    </script>
+</body>
+</html>
