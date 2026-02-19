@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dra. Marie Bustamante</title>
+    <title>Dra. Marie Bustamante | Revista Editorial</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
@@ -16,171 +16,169 @@
         }
 
         * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Lato', sans-serif; background-color: var(--beige); color: var(--text); overflow: hidden; touch-action: none; }
 
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            font-family: 'Lato', sans-serif;
-            background-color: var(--beige);
-            color: var(--text);
-            overflow: hidden; /* Evita que la página se mueva hacia abajo */
-        }
+        .slider-container { width: 100%; height: 100%; overflow: hidden; position: relative; }
+        .slider { display: flex; width: 600%; height: 100%; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        /* Contenedor principal */
-        .slider-container {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-        }
+        section { width: 16.666%; height: 100%; display: flex; flex-direction: column; flex-shrink: 0; }
 
-        .slider {
-            display: flex;
-            width: 600%; /* 6 páginas de 100% cada una */
-            height: 100%;
-            transition: transform 0.6s ease-in-out;
-        }
-
-        section {
-            width: 16.666%; /* 100% dividido entre 6 láminas */
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            flex-shrink: 0;
-        }
-
-        .content {
-            max-width: 90%;
-            width: 500px;
+        /* Zona de Texto: Mitad Superior */
+        .text-zone {
+            padding: 35px 8% 20px 8%;
             text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.8s all ease;
+            height: 60%; 
+            display: flex; flex-direction: column; justify-content: center;
+            overflow-y: auto;
         }
 
-        .active .content {
-            opacity: 1;
-            transform: translateY(0);
+        /* Zona de Imagen: Mitad Inferior */
+        .image-zone { height: 40%; width: 100%; overflow: hidden; display: flex; }
+        .image-zone img { width: 100%; height: 100%; object-fit: cover; }
+        .vignette { width: 50%; height: 100%; overflow: hidden; border: 1px solid var(--beige); }
+
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; color: var(--text); }
+        .bg-eucalyptus h1 { color: var(--white); }
+
+        .main-subtitle { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.25rem; 
+            font-style: italic; 
+            color: var(--gold); 
+            margin: 10px 0; 
+            line-height: 1.3;
         }
+        .bg-eucalyptus .main-subtitle { color: var(--white); }
 
-        /* Colores de fondo */
-        .bg-beige { background-color: var(--beige); }
-        .bg-white { background-color: var(--white); }
-        .bg-eucalyptus { background-color: var(--eucalyptus); color: var(--white); }
+        .editorial-text { font-size: 0.85rem; line-height: 1.6; max-width: 600px; margin: 0 auto; text-align: center; }
 
-        /* Textos */
-        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; text-transform: uppercase; margin-bottom: 15px; }
-        .gold-line { width: 40px; height: 1px; background: var(--gold); margin: 20px auto; }
-        .bg-eucalyptus .gold-line { background: var(--white); }
-        
+        /* Estilos específicos Página 3 (Programas) */
+        .programs-container { display: flex; gap: 15px; margin-top: 15px; text-align: left; }
+        .program-block { width: 50%; }
+        .program-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; margin: 0; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 5px; }
+        .program-block ul { list-style: none; padding: 0; margin: 8px 0; font-size: 0.75rem; line-height: 1.4; }
+        .program-block li::before { content: "• "; color: var(--gold); }
+
         /* Navegación */
-        .nav-arrow {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: var(--gold);
-            font-size: 3rem;
-            cursor: pointer;
-            z-index: 100;
-            padding: 10px;
-            opacity: 0.5;
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-        .bg-eucalyptus-nav { color: var(--white) !important; }
+        .nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gold); font-size: 3rem; cursor: pointer; z-index: 100; opacity: 0.2; }
+        .prev { left: 5px; } .next { right: 5px; }
 
-        .cta-btn {
-            display: inline-block;
-            margin-top: 20px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 12px 24px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-        .bg-eucalyptus .cta-btn { border-color: var(--white); color: var(--white); }
+        .cta-btn { display: inline-block; margin-top: 20px; border: 1px solid var(--gold); color: var(--gold); padding: 12px 25px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
+        
+        .logo-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold); margin-top: 30px; letter-spacing: 5px; }
 
-        .page-num {
-            position: fixed;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: var(--gold);
-        }
+        .page-num { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; color: var(--gold); font-weight: bold; }
 
-        /* Ajustes para móviles */
-        @media (max-width: 768px) {
-            h1 { font-size: 1.6rem; }
-            h2 { font-size: 1.3rem; }
-            .nav-arrow { display: none; } /* En móvil se usa swipe */
+        @media (min-width: 768px) {
+            section { flex-direction: row; }
+            .text-zone { width: 50%; height: 100%; padding: 5%; }
+            .image-zone { width: 50%; height: 100%; }
+            h1 { font-size: 2.2rem; }
+            .main-subtitle { font-size: 1.6rem; }
+            .editorial-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
 
     <button class="nav-arrow prev" onclick="moveSlide(-1)">‹</button>
-    <button class="nav-arrow next" id="arrowNext" onclick="moveSlide(1)">›</button>
+    <button class="nav-arrow next" onclick="moveSlide(1)">›</button>
 
     <div class="slider-container">
         <div class="slider" id="slider">
             
-            <section class="bg-beige active">
-                <div class="content">
+            <section class="bg-beige">
+                <div class="text-zone">
                     <h1>Marie Bustamante</h1>
-                    <div class="gold-line"></div>
-                    <p style="font-family: 'Cormorant Garamond'; font-style: italic; font-size: 1.2rem; font-style: italic; color: var(--gold);">El arte de sonreír en equilibrio</p>
+                    <p class="main-subtitle">El arte de sonreir en equilibrio</p>
+                    <p class="editorial-text">
+                        Soy la Dra. Marie Bustamante, odontóloga con 28 años de experiencia en Lima. Mi pasión es transformar la salud bucal de niños, adolescentes y adultos a través de la odontología estética y funcional. Con un equipo de especialistas de primer nivel, te ofrezco un espacio donde el cuidado se fusiona con la tranquilidad y la excelencia.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=1000" alt="Dra. Marie Bustamante">
                 </div>
             </section>
 
             <section class="bg-white">
-                <div class="content">
-                    <h2>El Origen de tu Calma</h2>
-                    <div class="gold-line"></div>
-                    <p>Priorizamos tu tranquilidad. Hemos diseñado un espacio donde tu bienestar comienza antes de sentarte en el sillón.</p>
+                <div class="text-zone">
+                    <h1>EL ORIGEN DE TU CALMA</h1>
+                    <p class="main-subtitle">Priorizamos tu tranquilidad. Hemos diseñado un espacio donde tu bienestar comienza antes de sentarte en el sillón.</p>
+                    <p class="editorial-text">
+                        Sabemos que la visita al dentista puede generar temor. Aquí, esa percepción cambia. Nuestro método se basa en la escucha activa, la delicadeza en cada paso y el uso de técnicas avanzadas para garantizar una experiencia sin estrés. Tu confort es nuestra prioridad, porque creemos que la tranquilidad es el primer paso hacia una salud bucal duradera.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&q=80&w=1000" alt="Consultorio Chic">
                 </div>
             </section>
 
             <section class="bg-eucalyptus">
-                <div class="content">
-                    <h2>Estética y Bienestar en cada Etapa</h2>
-                    <div class="gold-line"></div>
-                    <div style="text-align: left; font-size: 0.9rem;">
-                        <p><b>JUNIOR:</b> Sembrando confianza y salud desde su primera visita. Potenciamos su seguridad con alineación temprana y prevención, enfocados en un crecimiento estético y saludable.</p>
-                        <p><b>PREMIUM:</b> Arquitectura de la sonrisa y salud integral. Un enfoque delicado para armonizar tu expresión a través de una dentadura sana.</p>
+                <div class="text-zone">
+                    <h1>ESTÉTICA Y BIENESTAR EN CADA ETAPA</h1>
+                    <p class="main-subtitle" style="font-size: 1rem;">JUNIOR (4 a 15 años): Sembrando confianza y salud desde su primera visita.  PREMIUM: Diseño de la sonrisa y armonía dental integral.</p>
+                    <div class="programs-container">
+                        <div class="program-block">
+                            <h4>Programas Junior</h4>
+                            <p style="font-size:0.65rem; margin:5px 0;">Potenciamos su seguridad con alineación temprana y prevención, enfocados en un crecimiento estético y saludable.Desde la primera visita, construimos sonrisas fuertes y seguras, enfocados en un crecimiento armónico. Ofrecemos :</p>
+                            <ul>
+                                <li>Diseño de sonrisa</li>
+                                <li>Ortodoncia temprana</li>
+                                <li>Prevención de caries</li>
+                                <li>Limpieza</li>
+                                <li>Procedimientos</li>
+                            </ul>
+                        </div>
+                        <div class="program-block">
+                            <h4>Programas Premium</h4>
+                            <p style="font-size:0.65rem; margin:5px 0;">Restauramos la funcionalidad y belleza de tu sonrisa, siempre con una visión integral de tu bienestar y un enfoque delicado para armonizar tu expresión a través de una dentadura sana. Tratamientos que ofrecemos:</p>
+                            <ul>
+                                <li>Diseño de sonrisa</li>
+                                <li>Ortodoncia</li>
+                                <li>Limpieza</li>
+                                <li>Procedimientos</li>
+                            </ul>
+                        </div>
                     </div>
+                </div>
+                <div class="image-zone">
+                    <div class="vignette"><img src="https://images.unsplash.com/photo-1471333027242-0246a811e240?auto=format&fit=crop&q=80&w=600" alt="Niña"></div>
+                    <div class="vignette"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=600" alt="Mujer"></div>
                 </div>
             </section>
 
             <section class="bg-beige">
-                <div class="content">
-                    <h2>La Sonrisa como Eje</h2>
-                    <div class="gold-line"></div>
-                    <p>Tu salud fluye cuando tu boca está en armonía. Respirar, digerir y sostenerte con libertad es el verdadero propósito de nuestro trabajo.</p>
+                <div class="text-zone">
+                    <h1>LA SONRISA COMO EJE</h1>
+                    <p class="main-subtitle">Tu salud fluye cuando tu boca está en armonía. Respirar, digerir y sostenerte con libertad es el verdadero propósito.</p>
+                    <p class="editorial-text">
+                        La salud bucal forma parte de tu bienestar completo. Cuando tu boca está en equilibrio, respiras con mayor facilidad, digieres mejor y tu cuerpo se siente más ligero. Una mordida alineada y una mordida consciente ayudan no solo a nutrirte mejor, sino también a mantener una postura armónica. Cada detalle importa, porque tu sonrisa está conectada con todo tu organismo. Entendemos que la verdadera belleza emana de un cuerpo en armonía, y tu salud bucal es el punto de partida.
+                    </p>
                 </div>
-            </section>
-
-            <section class="bg-eucalyptus">
-                <div class="content">
-                    <h2>Experiencia personalizada</h2>
-                    <div class="gold-line"></div>
-                    <p>Odontología consciente y sin dolor. Transformamos tu visita en una pausa de bienestar absoluta con atención personalizada.</p>
+                <div class="image-zone">
+                    <img src="https://images.unsplash.com/photo-1545208393-596cc71199f2?auto=format&fit=crop&q=80&w=1000" alt="Yoga y Salud">
                 </div>
             </section>
 
             <section class="bg-white">
-                <div class="content">
-                    <h2>Te esperamos</h2>
-                    <div class="gold-line"></div>
-                    <p>Permítenos acompañarte hacia una versión más saludable y radiante de ti misma. Te esperamos.</p>
-                    <a href="https://wa.me/51902640540" class="cta-btn">Agendar Visita</a>
+                <div class="text-zone">
+                    <h1>EXPERIENCIA PERSONALIZADA</h1>
+                    <p class="main-subtitle">Transformamos tu visita en una pausa de bienestar absoluta.</p>
+                    <p class="editorial-text">
+                        Más allá de la odontología, ofrecemos un compromiso inquebrantable con tu bienestar a largo plazo. Creemos en educar para el autocuidado, sabemos que la salud es el cimiento de la belleza y que una sonrisa confiada es una fuerza creadora en cada persona.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&q=80&w=1000" alt="Loto">
+                </div>
+            </section>
+
+            <section class="bg-beige">
+                <div class="text-zone" style="height: 100%; width: 100%;">
+                    <h1>TE ESPERAMOS</h1>
+                    <p class="main-subtitle">Permítenos acompañarte hacia tu versión más saludable y radiante.</p>
+                    <a href="https://wa.me/51902640540" class="cta-btn">AGENDA UNA CITA</a>
+                    <div class="logo-placeholder">MB</div>
                 </div>
             </section>
 
@@ -192,28 +190,14 @@
     <script>
         let currentIdx = 0;
         const slider = document.getElementById('slider');
-        const sections = document.querySelectorAll('section');
         const pageNum = document.getElementById('pageNum');
-        const arrows = document.querySelectorAll('.nav-arrow');
 
         function moveSlide(dir) {
             currentIdx = Math.max(0, Math.min(currentIdx + dir, 5));
             slider.style.transform = `translateX(-${(currentIdx * 100) / 6}%)`;
-            
-            sections.forEach((s, i) => {
-                if(i === currentIdx) {
-                    s.classList.add('active');
-                    pageNum.innerText = `PÁG. ${i + 1}`;
-                    const isDark = s.classList.contains('bg-eucalyptus');
-                    arrows.forEach(a => a.style.color = isDark ? '#FFFFFF' : '#C5A059');
-                    pageNum.style.color = isDark ? '#F9F7F2' : '#C5A059';
-                } else {
-                    s.classList.remove('active');
-                }
-            });
+            pageNum.innerText = `PÁG. ${currentIdx + 1}`;
         }
 
-        // Soporte Touch para móviles
         let startX = 0;
         document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
         document.addEventListener('touchend', e => {
