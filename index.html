@@ -47,7 +47,8 @@
             margin: 0; 
             color: var(--text); 
         }
-        .bg-eucalyptus h1 { color: var(--white); }
+        /* Corregimos para que en el fondo verde el título sea gris oscuro */
+        .bg-eucalyptus h1 { color: var(--text); }
 
         .main-subtitle { 
             font-family: 'Cormorant Garamond', serif; 
@@ -56,9 +57,10 @@
             color: var(--gold); 
             margin: 15px 0; 
             line-height: 1.4;
-            min-height: 3em; /* Reserva espacio para mantener alineación */
+            min-height: 3em;
         }
-        .bg-eucalyptus .main-subtitle { color: var(--white); }
+        /* Corregimos para que en el fondo verde el subtítulo sea dorado */
+        .bg-eucalyptus .main-subtitle { color: var(--gold); }
 
         .editorial-text { 
             font-size: 0.9rem; 
@@ -67,14 +69,14 @@
             margin: 0 auto; 
             color: var(--text);
         }
-        .bg-eucalyptus .editorial-text { color: var(--white); }
+        .bg-eucalyptus .editorial-text { color: var(--text); }
 
         /* Página 3: Programas */
         .programs-container { display: flex; gap: 20px; margin-top: 10px; text-align: left; justify-content: center; }
         .program-block { width: 45%; max-width: 200px; }
         .program-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 3px; color: var(--gold); }
         .program-block ul { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--gold); }
-        .program-block li::before { content: "• "; color: var(--eucaliptus); opacity: 0.7; }
+        .program-block li::before { content: "• "; color: var(--eucalyptus); opacity: 0.7; }
 
         /* Botón de Acción Corregido */
         .cta-btn { 
