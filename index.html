@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Dra. Marie Bustamante | Revista Editorial</title>
+    <title>Dra. Marie Bustamante | Portafolio Editorial</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
@@ -23,66 +23,89 @@
 
         section { width: 16.666%; height: 100%; display: flex; flex-direction: column; flex-shrink: 0; }
 
-        /* Zona de Texto: Mitad Superior */
+        /* Estructura Editorial: Texto arriba, Imagen abajo */
         .text-zone {
-            padding: 35px 8% 20px 8%;
+            padding: 12vh 10% 20px 10%; /* Comienza en el primer cuarto de la pantalla aprox */
             text-align: center;
             height: 60%; 
-            display: flex; flex-direction: column; justify-content: center;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; /* Alinea los títulos a la misma altura en todas las pág */
             overflow-y: auto;
         }
 
-        /* Zona de Imagen: Mitad Inferior */
-        .image-zone { height: 40%; width: 100%; overflow: hidden; display: flex; }
+        .image-zone { height: 40%; width: 100%; overflow: hidden; display: flex; background: #eee; }
         .image-zone img { width: 100%; height: 100%; object-fit: cover; }
-        .vignette { width: 50%; height: 100%; overflow: hidden; border: 1px solid var(--beige); }
+        .vignette { width: 50%; height: 100%; overflow: hidden; border-right: 1px solid var(--beige); }
 
-        h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; color: var(--text); }
+        /* Tipografía Unificada */
+        h1 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.6rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin: 0; 
+            color: var(--text); 
+        }
         .bg-eucalyptus h1 { color: var(--white); }
 
         .main-subtitle { 
             font-family: 'Cormorant Garamond', serif; 
-            font-size: 1.25rem; 
+            font-size: 1.2rem; 
             font-style: italic; 
             color: var(--gold); 
-            margin: 10px 0; 
-            line-height: 1.3;
+            margin: 15px 0; 
+            line-height: 1.4;
+            min-height: 3em; /* Reserva espacio para mantener alineación */
         }
         .bg-eucalyptus .main-subtitle { color: var(--white); }
 
-        .editorial-text { font-size: 0.85rem; line-height: 1.6; max-width: 600px; margin: 0 auto; text-align: center; }
+        .editorial-text { 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            color: var(--text);
+        }
+        .bg-eucalyptus .editorial-text { color: var(--white); }
 
-        /* Estilos específicos Página 3 (Programas) */
-        .programs-container { display: flex; gap: 15px; margin-top: 15px; text-align: left; }
-        .program-block { width: 50%; }
-        .program-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; margin: 0; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 5px; }
-        .program-block ul { list-style: none; padding: 0; margin: 8px 0; font-size: 0.75rem; line-height: 1.4; }
-        .program-block li::before { content: "• "; color: var(--gold); }
+        /* Página 3: Programas */
+        .programs-container { display: flex; gap: 20px; margin-top: 10px; text-align: left; justify-content: center; }
+        .program-block { width: 45%; max-width: 200px; }
+        .program-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 3px; color: var(--white); }
+        .program-block ul { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--white); }
+        .program-block li::before { content: "• "; color: var(--white); opacity: 0.7; }
 
-        /* Navegación */
-        .nav-arrow { position: fixed; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--gold); font-size: 3rem; cursor: pointer; z-index: 100; opacity: 0.2; }
-        .prev { left: 5px; } .next { right: 5px; }
+        /* Botón de Acción Corregido */
+        .cta-btn { 
+            display: inline-block; 
+            margin: 25px auto; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            padding: 12px 35px; /* Padding lateral controlado */
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            font-weight: bold;
+            width: fit-content; /* No ocupa todo el ancho */
+        }
 
-        .cta-btn { display: inline-block; margin-top: 20px; border: 1px solid var(--gold); color: var(--gold); padding: 12px 25px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-weight: bold; }
-        
-        .logo-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold); margin-top: 30px; letter-spacing: 5px; }
+        .logo-placeholder { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--gold); margin-top: 20px; letter-spacing: 8px; }
 
-        .page-num { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; color: var(--gold); font-weight: bold; }
+        .page-num { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; color: var(--gold); font-weight: bold; z-index: 10; }
 
         @media (min-width: 768px) {
             section { flex-direction: row; }
-            .text-zone { width: 50%; height: 100%; padding: 5%; }
+            .text-zone { width: 50%; height: 100%; padding: 15vh 5% 5% 5%; }
             .image-zone { width: 50%; height: 100%; }
-            h1 { font-size: 2.2rem; }
-            .main-subtitle { font-size: 1.6rem; }
+            h1 { font-size: 2rem; }
+            .main-subtitle { font-size: 1.4rem; }
             .editorial-text { font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-
-    <button class="nav-arrow prev" onclick="moveSlide(-1)">‹</button>
-    <button class="nav-arrow next" onclick="moveSlide(1)">›</button>
 
     <div class="slider-container">
         <div class="slider" id="slider">
@@ -92,7 +115,7 @@
                     <h1>Marie Bustamante</h1>
                     <p class="main-subtitle">El arte de sonreir en equilibrio</p>
                     <p class="editorial-text">
-                        Soy la Dra. Marie Bustamante, odontóloga con 28 años de experiencia en Lima. Mi pasión es transformar la salud bucal de niños, adolescentes y adultos a través de la odontología estética y funcional. Con un equipo de especialistas de primer nivel, te ofrezco un espacio donde el cuidado se fusiona con la tranquilidad y la excelencia.
+                        Soy la Dra. Marie Bustamante, odontóloga con 28 años de experiencia. Mi pasión es transformar la salud bucal a través de la odontología estética y funcional. Con un equipo de especialistas de primer nivel, el cuidado se fusiona con la tranquilidad y la excelencia.
                     </p>
                 </div>
                 <div class="image-zone">
@@ -115,12 +138,11 @@
 
             <section class="bg-eucalyptus">
                 <div class="text-zone">
-                    <h1>ESTÉTICA Y BIENESTAR EN CADA ETAPA</h1>
-                    <p class="main-subtitle" style="font-size: 1rem;">JUNIOR (4 a 15 años): Sembrando confianza y salud desde su primera visita.  PREMIUM: Diseño de la sonrisa y armonía dental integral.</p>
+                    <h1>ESTÉTICA Y BIENESTAR</h1>
+                    <p class="main-subtitle">JUNIOR (4 a 15 años):  Sembrando confianza y salud.<br>PREMIUM: Diseño de la sonrisa y armonía integral.</p>
                     <div class="programs-container">
                         <div class="program-block">
-                            <h4>Programas Junior</h4>
-                            <p style="font-size:0.65rem; margin:5px 0;">Potenciamos su seguridad con alineación temprana y prevención, enfocados en un crecimiento estético y saludable.Desde la primera visita, construimos sonrisas fuertes y seguras, enfocados en un crecimiento armónico. Ofrecemos :</p>
+                            <h4>JUNIOR</h4>
                             <ul>
                                 <li>Diseño de sonrisa</li>
                                 <li>Ortodoncia temprana</li>
@@ -130,8 +152,7 @@
                             </ul>
                         </div>
                         <div class="program-block">
-                            <h4>Programas Premium</h4>
-                            <p style="font-size:0.65rem; margin:5px 0;">Restauramos la funcionalidad y belleza de tu sonrisa, siempre con una visión integral de tu bienestar y un enfoque delicado para armonizar tu expresión a través de una dentadura sana. Tratamientos que ofrecemos:</p>
+                            <h4>PREMIUM</h4>
                             <ul>
                                 <li>Diseño de sonrisa</li>
                                 <li>Ortodoncia</li>
@@ -174,7 +195,7 @@
             </section>
 
             <section class="bg-beige">
-                <div class="text-zone" style="height: 100%; width: 100%;">
+                <div class="text-zone" style="height: 100%; justify-content: center; padding-top: 0;">
                     <h1>TE ESPERAMOS</h1>
                     <p class="main-subtitle">Permítenos acompañarte hacia tu versión más saludable y radiante.</p>
                     <a href="https://wa.me/51902640540" class="cta-btn">AGENDA UNA CITA</a>
@@ -204,6 +225,10 @@
             let endX = e.changedTouches[0].clientX;
             if (startX - endX > 50) moveSlide(1);
             if (endX - startX > 50) moveSlide(-1);
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === "ArrowRight") moveSlide(1);
+            if (e.key === "ArrowLeft") moveSlide(-1);
         });
     </script>
 </body>
