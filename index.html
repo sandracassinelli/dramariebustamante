@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dra. Marie Bustamante | Odontóloga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --beige: #F9F7F2;
+            --gold: #C5A059;
+            --eucalyptus: #879B89;
+            --text: #4A4A4A;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; font-family: 'Lato', sans-serif; background-color: var(--beige); color: var(--text); overflow: hidden; touch-action: none; }
+
+        .slider-container { width: 100%; height: 100%; overflow: hidden; position: relative; }
+        .slider { display: flex; width: 600%; height: 100%; transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        section { width: 16.666%; height: 100%; display: flex; flex-direction: column; flex-shrink: 0; }
+
+        /* Estructura Editorial: Texto arriba, Imagen abajo */
+        .text-zone {
+            padding: 12vh 10% 20px 10%; /* Comienza en el primer cuarto de la pantalla aprox */
+            text-align: center;
+            height: 60%; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; /* Alinea los títulos a la misma altura en todas las pág */
+            overflow-y: auto;
+        }
+
+        .image-zone { height: 40%; width: 100%; overflow: hidden; display: flex; background: #eee; }
+        .image-zone img { width: 100%; height: 100%; object-fit: cover; }
+        .vignette { width: 50%; height: 100%; overflow: hidden; border-right: 1px solid var(--beige); }
+
+        /* Tipografía Unificada */
+        h1 { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.6rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin: 0; 
+            color: var(--text); 
+        }
+        /* Corregimos para que en el fondo verde el título sea gris oscuro */
+        .bg-eucalyptus h1 { color: var(--text); }
+
+        .main-subtitle { 
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.2rem; 
+            font-style: italic; 
+            color: var(--gold); 
+            margin: 15px 0; 
+            line-height: 1.3;
+            min-height: 3em;
+        }
+        /* Corregimos para que en el fondo verde el subtítulo sea dorado */
+        .bg-eucalyptus .main-subtitle { color: var(--gold); }
+
+        .editorial-text { 
+            font-size: 0.9rem; 
+            line-height: 1.6; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            color: var(--text);
+        }
+        .bg-eucalyptus .editorial-text { color: var(--text); }
+
+        /* Página 3: Programas */
+        .programs-container { display: flex; gap: 20px; margin-top: 10px; text-align: left; justify-content: center; }
+        .program-block { width: 45%; max-width: 200px; }
+        .program-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; margin-bottom: 8px; text-transform: uppercase; border-bottom: 1px solid var(--text); padding-bottom: 3px; color: var(--gold); }
+        .program-block ul { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--text); }
+        .program-block li::before { content: "• "; color: var(--eucalyptus); opacity: 0.7; }
+
+        /* Botón de Acción Corregido */
+        .cta-btn { 
+            display: inline-block; 
+            margin: 25px auto; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            padding: 12px 35px; /* Padding lateral controlado */
+            text-decoration: none; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            font-weight: bold;
+            width: fit-content; /* No ocupa todo el ancho */
+        }
+
+        .logo-final {
+    width: 120px; /* Puedes ajustar este número según qué tan grande quieras el logo */
+    height: auto;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+        
+        .page-num { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; color: var(--gold); font-weight: bold; z-index: 10; }
+
+        @media (min-width: 768px) {
+            section { flex-direction: row; }
+            .text-zone { width: 50%; height: 100%; padding: 15vh 5% 5% 5%; }
+            .image-zone { width: 50%; height: 100%; }
+            h1 { font-size: 2rem; }
+            .main-subtitle { font-size: 1.4rem; }
+            .editorial-text { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slider-container">
+        <div class="slider" id="slider">
+            
+            <section class="bg-beige">
+                <div class="text-zone">
+                    <h1>Dra. Marie Bustamante</h1>
+                    <p class="main-subtitle">El arte de sonreir en equilibrio</p>
+                    <p class="editorial-text">
+                        Soy la Dra. Marie Bustamante, odontóloga por vocación y pasión. La odontología, para mí, es una forma de arte donde cada detalle importa. Después de más de 25 años de experiencia, he aprendido que lograr una sonrisa armónica no solo depende de la técnica, sino del equilibrio entre función, estética y bienestar. Mi enfoque combina ciencia, sensibilidad y precisión, buscando resultados naturales que respeten la esencia de cada persona. Cada tratamiento es diseñado cuidadosamente, como una obra única, donde la armonía del rostro, la mordida y la expresión se integran en perfecto balance.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="assets/DraMarieBustamantePerfil.jpg" alt="Dra. Marie Bustamante">
+                </div>
+            </section>
+
+            <section class="bg-white">
+                <div class="text-zone">
+                    <h1>EL ORIGEN DE TU CALMA</h1>
+                    <p class="main-subtitle">Priorizamos tu tranquilidad.</p>
+                    <p class="editorial-text">
+                        Sabemos que para muchas personas, ir al dentista puede generar temor, ansiedad o incluso recordar experiencias pasadas difíciles. Por eso, hemos creado un espacio donde todo está pensado para cambiar esa percepción. Desde el ambiente hasta la forma en que te acompañamos, buscamos que te sientas seguro, escuchado y en confianza desde el primer momento, Aquí, cada consulta es una experiencia distinta: sin apuros, sin presión, con empatía y cuidado genuino.               </p>
+                </div>
+                <div class="image-zone">
+                    <img src="assets/DraMarieBustamantepro.jpeg" alt="Consultorio">
+                </div>
+            </section>
+
+            <section class="bg-eucalyptus">
+                <div class="text-zone">
+                    <h1>ESTÉTICA Y BIENESTAR</h1>
+                            <p class="editorial-text">
+                        Una sonrisa no solo transforma el rostro, también transforma la manera cómo te sientes contigo mismo. Nos especializamos en estética y rehabilitación oral, logrando resultados que no solo se ven bien, sino que se sienten bien. Trabajamos respetando la funcionalidad, la naturalidad y tu salud integral. Porque cuando hay armonía en tu sonrisa, hay bienestar en tu vida.
+                    </p>
+                </div>
+                    <p class="main-subtitle">JUNIOR (de 4 a 15 años)<br>PREMIUM: 16 años a + </p>
+                    <div class="programs-container">
+                        <div class="program-block">
+                            <h4>JUNIOR</h4>
+                            <ul>
+                                <li>Diseño de sonrisa</li>
+                                <li>Ortodoncia temprana</li>
+                                <li>Prevención de caries</li>
+                                <li>Limpieza</li>
+                                <li>Procedimientos</li>
+                            </ul>
+                        </div>
+                        <div class="program-block">
+                            <h4>PREMIUM</h4>
+                            <ul>
+                                <li>Diseño de sonrisa</li>
+                                <li>Ortodoncia</li>
+                                <li>Limpieza</li>
+                                <li>Procedimientos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-zone">
+                    <div class="vignette"><img src="assets/FotoNiñaSonriendo.jpg"Niña"></div>
+                    <div class="vignette"><img src="assets/FotoNiñoSonriendo.jpg" alt="Chico"></div>
+                </div>
+            </section>
+
+            <section class="bg-beige">
+                <div class="text-zone">
+                    <h1>LA SONRISA COMO EJE</h1>
+                    <p class="main-subtitle">Tu salud fluye cuando tu boca está en armonía. Respirar, digerir y sostenerte con libertad es el verdadero propósito.</p>
+                    <p class="editorial-text">
+                        La mordida es el eje de equilibrio de todo el sistema. Un desbalance puede generar desgaste dental, tensión muscular, dolores en la cara, cabeza e incluso afectar la postura. Por eso, analizamos  cada caso de manera integral, incluyendo el uso de férulas de relajación cuando es necesario para devolver estabilidad, descanso y bienestar. Pequeños ajustes pueden generar grandes cambios en tu calidad de vida.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="assets/FotoMujerYogaSalud.jpg" alt="Yoga y Salud">
+                </div>
+            </section>
+
+            <section class="bg-white">
+                <div class="text-zone">
+                    <h1>EXPERIENCIA PERSONALIZADA</h1>
+                    <p class="main-subtitle">Transformamos tu visita en una pausa de bienestar absoluta.</p>
+                    <p class="editorial-text">
+                        Cada persona es única, y así debe ser su tratamiento. Nos tomamos el tiempo de escucharte, entenderte y acompañarte en cada paso. Aquí no eres un paciente más, eres alguien importante para nosotros. Transformamos tu visita en una pausa de bienestar: un espacio donde puedes relajarte, sentirte cuidado y confiar plenamente en que estás en las mejores manos.
+                    </p>
+                </div>
+                <div class="image-zone">
+                    <img src="assets/DraMarieBustamanteatiende.jpeg" alt="Eucalipto">
+                </div>
+            </section>
+
+            <section class="bg-beige">
+                <div class="text-zone" style="height: 100%; justify-content: center; padding-top: 0;">
+                    <h1>TE ESPERAMOS</h1>
+                    <p class="main-subtitle">Permítenos acompañarte hacia tu versión más saludable y radiante.</p>
+                    <a href="https://wa.me/51902640540" class="cta-btn">AGENDA UNA CITA</a>
+                    <img src="assets/LogoDraMarieBustamante.png" alt="Logo Marie Bustamante" class="logo-final">
+                </div>
+  
+                <div class="image-zone">
+                    <img src="assets/FotoMujerYogaSalud.jpg" alt="Yoga y Salud">
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <div class="page-num" id="pageNum">PÁG. 1</div>
+
+    <script>
+        let currentIdx = 0;
+        const slider = document.getElementById('slider');
+        const pageNum = document.getElementById('pageNum');
+
+        function moveSlide(dir) {
+            currentIdx = Math.max(0, Math.min(currentIdx + dir, 5));
+            slider.style.transform = `translateX(-${(currentIdx * 100) / 6}%)`;
+            pageNum.innerText = `PÁG. ${currentIdx + 1}`;
+        }
+
+        let startX = 0;
+        document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+        document.addEventListener('touchend', e => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50) moveSlide(1);
+            if (endX - startX > 50) moveSlide(-1);
+        });
+        document.addEventListener('keydown', e => {
+            if (e.key === "ArrowRight") moveSlide(1);
+            if (e.key === "ArrowLeft") moveSlide(-1);
+        });
+    </script>
+</body>
+</html>
