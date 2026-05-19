@@ -23,14 +23,19 @@
 
         section { width: 16.666%; height: 100%; display: flex; flex-direction: column; flex-shrink: 0; }
 
+        /* Fondos de cada página */
+        .bg-beige { background-color: var(--beige); }
+        .bg-white { background-color: var(--white); }
+        .bg-eucalyptus { background-color: var(--eucalyptus); }
+
         /* Estructura Editorial: Texto arriba, Imagen abajo */
         .text-zone {
-            padding: 12vh 10% 20px 10%; /* Comienza en el primer cuarto de la pantalla aprox */
+            padding: 12vh 10% 20px 10%;
             text-align: center;
             height: 60%; 
             display: flex; 
             flex-direction: column; 
-            justify-content: flex-start; /* Alinea los títulos a la misma altura en todas las pág */
+            justify-content: flex-start;
             overflow-y: auto;
         }
 
@@ -47,7 +52,6 @@
             margin: 0; 
             color: var(--text); 
         }
-        /* Corregimos para que en el fondo verde el título sea gris oscuro */
         .bg-eucalyptus h1 { color: var(--text); }
 
         .main-subtitle { 
@@ -59,7 +63,6 @@
             line-height: 1.3;
             min-height: 3em;
         }
-        /* Corregimos para que en el fondo verde el subtítulo sea dorado */
         .bg-eucalyptus .main-subtitle { color: var(--gold); }
 
         .editorial-text { 
@@ -78,29 +81,29 @@
         .program-block ul { list-style: none; padding: 0; margin: 0; font-size: 0.8rem; line-height: 1.5; color: var(--text); }
         .program-block li::before { content: "• "; color: var(--eucalyptus); opacity: 0.7; }
 
-        /* Botón de Acción Corregido */
+        /* Botón de Acción */
         .cta-btn { 
             display: inline-block; 
             margin: 25px auto; 
             border: 1px solid var(--gold); 
             color: var(--gold); 
-            padding: 12px 35px; /* Padding lateral controlado */
+            padding: 12px 35px;
             text-decoration: none; 
             text-transform: uppercase; 
             font-size: 0.8rem; 
             letter-spacing: 2px; 
             font-weight: bold;
-            width: fit-content; /* No ocupa todo el ancho */
+            width: fit-content;
         }
 
         .logo-final {
-    width: 120px; /* Puedes ajustar este número según qué tan grande quieras el logo */
-    height: auto;
-    margin-top: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+            width: 120px;
+            height: auto;
+            margin-top: 30px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
         
         .page-num { position: fixed; bottom: 15px; width: 100%; text-align: center; font-size: 0.6rem; letter-spacing: 2px; color: var(--gold); font-weight: bold; z-index: 10; }
 
@@ -119,6 +122,7 @@
     <div class="slider-container">
         <div class="slider" id="slider">
             
+            <!-- PÁGINA 1 -->
             <section class="bg-beige">
                 <div class="text-zone">
                     <h1>Dra. Marie Bustamante</h1>
@@ -132,26 +136,28 @@
                 </div>
             </section>
 
+            <!-- PÁGINA 2 -->
             <section class="bg-white">
                 <div class="text-zone">
                     <h1>EL ORIGEN DE TU CALMA</h1>
                     <p class="main-subtitle">Priorizamos tu tranquilidad.</p>
                     <p class="editorial-text">
-                        Sabemos que para muchas personas, ir al dentista puede generar temor, ansiedad o incluso recordar experiencias pasadas difíciles. Por eso, hemos creado un espacio donde todo está pensado para cambiar esa percepción. Desde el ambiente hasta la forma en que te acompañamos, buscamos que te sientas seguro, escuchado y en confianza desde el primer momento, Aquí, cada consulta es una experiencia distinta: sin apuros, sin presión, con empatía y cuidado genuino.               </p>
+                        Sabemos que para muchas personas, ir al dentista puede generar temor, ansiedad o incluso recordar experiencias pasadas difíciles. Por eso, hemos creado un espacio donde todo está pensado para cambiar esa percepción. Desde el ambiente hasta la forma en que te acompañamos, buscamos que te sientas seguro, escuchado y en confianza desde el primer momento. Aquí, cada consulta es una experiencia distinta: sin apuros, sin presión, con empatía y cuidado genuino.
+                    </p>
                 </div>
                 <div class="image-zone">
                     <img src="assets/DraMarieBustamantepro.jpeg" alt="Consultorio">
                 </div>
             </section>
 
+            <!-- PÁGINA 3 - CORREGIDA -->
             <section class="bg-eucalyptus">
                 <div class="text-zone">
                     <h1>ESTÉTICA Y BIENESTAR</h1>
-                            <p class="editorial-text">
+                    <p class="main-subtitle">JUNIOR (de 4 a 15 años)<br>PREMIUM: 16 años a + </p>
+                    <p class="editorial-text">
                         Una sonrisa no solo transforma el rostro, también transforma la manera cómo te sientes contigo mismo. Nos especializamos en estética y rehabilitación oral, logrando resultados que no solo se ven bien, sino que se sienten bien. Trabajamos respetando la funcionalidad, la naturalidad y tu salud integral. Porque cuando hay armonía en tu sonrisa, hay bienestar en tu vida.
                     </p>
-                </div>
-                    <p class="main-subtitle">JUNIOR (de 4 a 15 años)<br>PREMIUM: 16 años a + </p>
                     <div class="programs-container">
                         <div class="program-block">
                             <h4>JUNIOR</h4>
@@ -175,17 +181,18 @@
                     </div>
                 </div>
                 <div class="image-zone">
-                    <div class="vignette"><img src="assets/FotoNiñaSonriendo.jpg"Niña"></div>
-                    <div class="vignette"><img src="assets/FotoNiñoSonriendo.jpg" alt="Chico"></div>
+                    <div class="vignette"><img src="assets/FotoNiñaSonriendo.jpg" alt="Niña"></div>
+                    <div class="vignette"><img src="assets/FotoNiñoSonriendo.jpg" alt="Niño"></div>
                 </div>
             </section>
 
+            <!-- PÁGINA 4 -->
             <section class="bg-beige">
                 <div class="text-zone">
                     <h1>LA SONRISA COMO EJE</h1>
                     <p class="main-subtitle">Tu salud fluye cuando tu boca está en armonía. Respirar, digerir y sostenerte con libertad es el verdadero propósito.</p>
                     <p class="editorial-text">
-                        La mordida es el eje de equilibrio de todo el sistema. Un desbalance puede generar desgaste dental, tensión muscular, dolores en la cara, cabeza e incluso afectar la postura. Por eso, analizamos  cada caso de manera integral, incluyendo el uso de férulas de relajación cuando es necesario para devolver estabilidad, descanso y bienestar. Pequeños ajustes pueden generar grandes cambios en tu calidad de vida.
+                        La mordida es el eje de equilibrio de todo el sistema. Un desbalance puede generar desgaste dental, tensión muscular, dolores en la cara, cabeza e incluso afectar la postura. Por eso, analizamos cada caso de manera integral, incluyendo el uso de férulas de relajación cuando es necesario para devolver estabilidad, descanso y bienestar. Pequeños ajustes pueden generar grandes cambios en tu calidad de vida.
                     </p>
                 </div>
                 <div class="image-zone">
@@ -193,6 +200,7 @@
                 </div>
             </section>
 
+            <!-- PÁGINA 5 -->
             <section class="bg-white">
                 <div class="text-zone">
                     <h1>EXPERIENCIA PERSONALIZADA</h1>
@@ -202,20 +210,17 @@
                     </p>
                 </div>
                 <div class="image-zone">
-                    <img src="assets/DraMarieBustamanteatiende.jpeg" alt="Eucalipto">
+                    <img src="assets/DraMarieBustamanteatiende.jpeg" alt="Atención personalizada">
                 </div>
             </section>
 
+            <!-- PÁGINA 6 - CORREGIDA -->
             <section class="bg-beige">
                 <div class="text-zone" style="height: 100%; justify-content: center; padding-top: 0;">
                     <h1>TE ESPERAMOS</h1>
                     <p class="main-subtitle">Permítenos acompañarte hacia tu versión más saludable y radiante.</p>
                     <a href="https://wa.me/51902640540" class="cta-btn">AGENDA UNA CITA</a>
                     <img src="assets/LogoDraMarieBustamante.png" alt="Logo Marie Bustamante" class="logo-final">
-                </div>
-  
-                <div class="image-zone">
-                    <img src="assets/FotoMujerYogaSalud.jpg" alt="Yoga y Salud">
                 </div>
             </section>
 
